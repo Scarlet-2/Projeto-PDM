@@ -13,29 +13,29 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity {
 
+    String URL_BASE_CADASTRO = "https://mfpledon.com.br/contatos2025/cadastrarContatoTexto.php";
+    String senha = "35wsx@3";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
         Button autor = (Button)findViewById(R.id.autores);
         Button consulta = (Button)findViewById(R.id.consulta);
         Button cadastra = (Button)findViewById(R.id.cadastro);
         Button deleta = (Button)findViewById(R.id.deleta);
-
 
         autor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,25 +51,33 @@ public class MainActivity extends AppCompatActivity {
                 new Thread(() -> {
                     try {
                         TextView Console = (TextView)findViewById(R.id.console);
-
                         String nome = ((EditText) findViewById(R.id.name)).getText().toString();
                         String fone = ((EditText) findViewById(R.id.fone)).getText().toString();
                         String email = ((EditText) findViewById(R.id.email)).getText().toString();
-
                         String nomeCodificado = URLEncoder.encode(nome, "UTF-8");
-                        String foneCodificado = URLEncoder.encode(fone, "UTF-8");
-                        String emailCodificado = URLEncoder.encode(email, "UTF-8");
-                        String senha = "35wsx@3";
-                        String URL_BASE = "https://mfpledon.com.br/contatos2025/cadastrarContatoTexto.php";
 
-                        Console.setText("Nome: "+nomeCodificado+"\nTelefone: "+foneCodificado+"\nE-mail: "+emailCodificado);
-
-                        String urlCompleta = URL_BASE +
+                        String urlCompleta = URL_BASE_CADASTRO +
                                 "?nome=" + nomeCodificado +
-                                "&fone" + foneCodificado +
-                                "&email" + emailCodificado +
-                                "&senha" + senha;
-//                        URL url =
+                                "&fone=" + fone +
+                                "&email=" + email +
+                                "&senha=" + senha;
+                        URL url = new URL(urlCompleta);
+                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                        connection.setRequestMethod("GET");
+
+                        int responseCode = connection.getResponseCode();
+                        if (responseCode == HttpURLConnection.HTTP_OK){
+                            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                            String inputLine;
+                            StringBuilder response = new StringBuilder();
+                            while ((inputLine = in.readLine()) != null){
+                                response.append(inputLine);
+                            }
+                            in.close();
+                            Console.setText(response.toString());
+                        } else {
+                            Console.setText(responseCode);
+                        }
 
                     } catch (Exception  e) {
                         e.printStackTrace();
@@ -83,9 +91,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO: Criar sistema de consulta
+
             }
         });
-
 
         // botão de deletar cadastro
         deleta.setOnClickListener(new View.OnClickListener() {
