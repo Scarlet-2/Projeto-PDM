@@ -24,8 +24,8 @@ import java.nio.charset.StandardCharsets;
 public class MainActivity extends AppCompatActivity {
 
     String URL_BASE_CADASTRO = "https://mfpledon.com.br/contatos2025/cadastrarContatoTexto.php";
+    String URL_BASE_ELIMINAR = "https://mfpledon.com.br/contatos2025/eliminarContato.php";
     String senha = "35wsx@3";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
         cadastra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                TextView Console = (TextView)findViewById(R.id.console);
                 new Thread(() -> {
                     try {
-                        TextView Console = (TextView)findViewById(R.id.console);
                         String nome = ((EditText) findViewById(R.id.name)).getText().toString();
                         String fone = ((EditText) findViewById(R.id.fone)).getText().toString();
                         String email = ((EditText) findViewById(R.id.email)).getText().toString();
@@ -99,8 +99,35 @@ public class MainActivity extends AppCompatActivity {
         deleta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nome = ((EditText) findViewById(R.id.name)).getText().toString();
-                // TODO: Criar sistema de Cadastro
+                TextView Console = (TextView)findViewById(R.id.console);
+                new Thread(() -> {
+                    try {
+                        String nome = ((EditText) findViewById(R.id.name)).getText().toString();
+                        String nomeCodificado = URLEncoder.encode(nome, "UTF-8");
+
+                        String urlCompleta = URL_BASE_ELIMINAR + "?nome=" + nomeCodificado + "&senha=" + senha;
+                        URL url = new URL(urlCompleta);
+                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                        connection.setRequestMethod("GET");
+
+                        int responseCode = connection.getResponseCode();
+                        if (responseCode == HttpURLConnection.HTTP_OK){
+                            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                            String inputLine;
+                            StringBuilder response = new StringBuilder();
+                            while ((inputLine = in.readLine()) != null){
+                                response.append(inputLine);
+                            }
+                            in.close();
+                            Console.setText(response.toString());
+                        } else {
+                            Console.setText(responseCode);
+                        }
+
+                    } catch (Exception  e) {
+                        e.printStackTrace();
+                    }
+                }).start();
             }
         });
 
