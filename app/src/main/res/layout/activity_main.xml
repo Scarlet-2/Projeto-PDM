@@ -53,10 +53,7 @@
                         android:id="@+id/console"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:height="400dp"
-                        android:text=" Texto aqui\n Se não me esqueci coloque id em tudo\n o ID dessa caixa de texto é: console
-                        \n Fiz os botões e peguei os dados do campos já e quiser testar escreve e aperta cadastros
-                        \n A tela de Autores ta pronta tbm, sõ mudar as imagens do kirb" />
+                        android:height="400dp" />
                 </LinearLayout>
             </ScrollView>
 
