@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="50dp">
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Nome"/>
+
+            <EditText
+                android:id="@+id/fone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Fone" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="E-mail" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/console"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" Texto aqui\n Se não me esqueci coloque id em tudo\n o ID dessa caixa de texto é: console
+            \n Fiz os botões e peguei os dados do campos já e quiser testar escreve e aperta cadastros
+            \n A tela de Autores ta pronta tbm, sõ mudar as imagens do kirb"
+            android:height="400dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="15dp">
+
+            <Button
+                android:id="@+id/cadastro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cadastro"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/consulta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Consulta"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/deleta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Exclusão"
+                android:textSize="16dp" />
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/autores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Autores"
+            android:textSize="16dp"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
