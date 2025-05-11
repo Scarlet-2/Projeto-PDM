@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
                         String senha = "35wsx@3";
                         String URL_BASE = "https://mfpledon.com.br/contatos2025/cadastrarContatoTexto.php";
 
-
                         Console.setText("Nome: "+nomeCodificado+"\nTelefone: "+foneCodificado+"\nE-mail: "+emailCodificado);
 
                         String urlCompleta = URL_BASE +
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         consulta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // TODO: Criar sistema de consulta
             }
         });
 
@@ -93,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String nome = ((EditText) findViewById(R.id.name)).getText().toString();
-
+                // TODO: Criar sistema de Cadastro
             }
         });
 
