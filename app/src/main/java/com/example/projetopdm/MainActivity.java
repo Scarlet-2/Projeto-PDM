@@ -25,6 +25,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
+import javax.net.ssl.HttpsURLConnection;
+
 public class MainActivity extends AppCompatActivity {
 
     String URL_BASE_CADASTRO = "https://mfpledon.com.br/contatos2025/cadastrarContatoTexto.php";
@@ -35,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
+        TextView Console = (TextView)findViewById(R.id.console);
+        Console.setMovementMethod(new ScrollingMovementMethod());
         Button autor = (Button)findViewById(R.id.autores);
         Button consulta = (Button)findViewById(R.id.consulta);
         Button cadastra = (Button)findViewById(R.id.cadastro);
@@ -52,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         cadastra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView Console = (TextView)findViewById(R.id.console);
                 new Thread(() -> {
                     try {
                         String nome = ((EditText) findViewById(R.id.name)).getText().toString();
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                                 "&email=" + email +
                                 "&senha=" + senha;
                         URL url = new URL(urlCompleta);
-                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
                         connection.setRequestMethod("GET");
 
                         int responseCode = connection.getResponseCode();
@@ -96,10 +98,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 new Thread(() -> {
                     try {
-                        TextView Console = (TextView) findViewById(R.id.console);
-
                         URL url = new URL("https://mfpledon.com.br/contatos2025/contatosJSON.php");
-                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
                         connection.setRequestMethod("GET");
 
                         int responseCode = connection.getResponseCode();
@@ -119,9 +119,8 @@ public class MainActivity extends AppCompatActivity {
                                 String celularString = contato.getString("celular");
                                 String emailString = contato.getString("email");
 
-                                Console.append("contato: " + contatoString + "\n" + "celular: " + celularString + "\n" + "email" + emailString + "\n\n");
+                                Console.append("contato: " + contatoString + "\n" + "celular: " + celularString + "\n" + "email: " + emailString + "\n\n");
                             }
-                            Console.setMovementMethod(new ScrollingMovementMethod());
                             in.close();
                         } else {
                             Console.setText(responseCode);
@@ -145,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
                         String urlCompleta = URL_BASE_ELIMINAR + "?nome=" + nomeCodificado + "&senha=" + senha;
                         URL url = new URL(urlCompleta);
-                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
                         connection.setRequestMethod("GET");
 
                         int responseCode = connection.getResponseCode();
