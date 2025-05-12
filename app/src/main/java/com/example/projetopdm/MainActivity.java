@@ -29,12 +29,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        TextView Console = (TextView)findViewById(R.id.console);
+        TextView Console = findViewById(R.id.console);
         Console.setMovementMethod(new ScrollingMovementMethod());
-        Button autor = (Button)findViewById(R.id.autores);
-        Button consulta = (Button)findViewById(R.id.consulta);
-        Button cadastra = (Button)findViewById(R.id.cadastro);
-        Button deleta = (Button)findViewById(R.id.deleta);
+        Button autor = findViewById(R.id.autores);
+        Button consulta = findViewById(R.id.consulta);
+        Button cadastra = findViewById(R.id.cadastro);
+        Button deleta = findViewById(R.id.deleta);
 
         autor.setOnClickListener(new View.OnClickListener() {
             @Override
