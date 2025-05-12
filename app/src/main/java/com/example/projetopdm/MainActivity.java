@@ -74,8 +74,24 @@ public class MainActivity extends AppCompatActivity {
                                 response.append(inputLine);
                             }
                             in.close();
-                            Console.setText(response.toString());
-                        } else {
+                            String check = response.toString();
+                            switch (check) {
+                                case "erro1":
+                                    Console.setText("Erro de conexão");
+                                    break;
+                                case "erro2":
+                                    Console.setText("Campo invalido");
+                                    break;
+                                case "erro3":
+                                    Console.setText("Cadastro ja existente");
+                                    break;
+                                case "erro4":
+                                    Console.setText("Senha invalida");
+                                    break;
+                                default:
+                                    Console.setText("Completo com sucesso");
+                                    break;
+                            }                        } else {
                             Console.setText(responseCode);
                         }
 
@@ -150,7 +166,25 @@ public class MainActivity extends AppCompatActivity {
                                 response.append(inputLine);
                             }
                             in.close();
-                            Console.setText(response.toString());
+                            String check = response.toString();
+                            switch (check) {
+                                case "erro1":
+                                    Console.setText("Erro de conexão");
+                                    break;
+                                case "erro2":
+                                    Console.setText("Campo invalido");
+                                    break;
+                                case "erro3":
+                                    Console.setText("Cadastro inexistente");
+                                    break;
+                                case "erro4":
+                                    Console.setText("Senha invalida");
+                                    break;
+                                default:
+                                    Console.setText("Completo com sucesso");
+                                    break;
+                            }
+
                         } else {
                             Console.setText(responseCode);
                         }
