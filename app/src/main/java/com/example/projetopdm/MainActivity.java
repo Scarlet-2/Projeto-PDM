@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         cadastra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Console.setText("");
                 new Thread(() -> {
                     try {
                         String nome = ((EditText) findViewById(R.id.name)).getText().toString();
@@ -89,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         consulta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Console.setText("");
                 new Thread(() -> {
                     try {
                         URL url = new URL("https://mfpledon.com.br/contatos2025/contatosJSON.php");
@@ -128,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
         deleta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Console.setText("");
                 new Thread(() -> {
                     try {
                         String nome = ((EditText) findViewById(R.id.name)).getText().toString();
