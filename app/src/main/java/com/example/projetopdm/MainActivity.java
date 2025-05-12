@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                         String nome = ((EditText) findViewById(R.id.name)).getText().toString();
                         String fone = ((EditText) findViewById(R.id.fone)).getText().toString();
                         String email = ((EditText) findViewById(R.id.email)).getText().toString();
-                        String nomeCodificado = URLEncoder.encode(nome, "UTF-8");
+                        String nomeCodificado = URLEncoder.encode(nome, StandardCharsets.UTF_8);
 
                         String urlCompleta = URL_BASE_CADASTRO +
                                 "?nome=" + nomeCodificado +
@@ -102,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
                             while ((inputLine = in.readLine()) != null) {
                                 response.append(inputLine);
                             }
-                            String resposta = "";
                             JSONObject reader = new JSONObject(response.toString());
                             JSONArray contatos = reader.getJSONArray("pessoas");
                             for (int i = 0; i < contatos.length(); i++) {
@@ -128,11 +128,10 @@ public class MainActivity extends AppCompatActivity {
         deleta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextView Console = (TextView)findViewById(R.id.console);
                 new Thread(() -> {
                     try {
                         String nome = ((EditText) findViewById(R.id.name)).getText().toString();
-                        String nomeCodificado = URLEncoder.encode(nome, "UTF-8");
+                        String nomeCodificado = URLEncoder.encode(nome, StandardCharsets.UTF_8);
 
                         String urlCompleta = URL_BASE_ELIMINAR + "?nome=" + nomeCodificado + "&senha=" + senha;
                         URL url = new URL(urlCompleta);
