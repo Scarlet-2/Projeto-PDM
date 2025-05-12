@@ -23,27 +23,23 @@
                 android:id="@+id/img1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_weight="1"
                 android:src="@drawable/yoda" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/nome1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Nome: Guilherme Ferreira da Silva                     " />
 
                 <TextView
                     android:id="@+id/rgm1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="RGM: 35084219" />
             </LinearLayout>
 
@@ -58,27 +54,23 @@
                 android:id="@+id/img2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_weight="1"
                 android:src="@drawable/gusthavo" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/nome2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Nome: Gusthavo Luiz Navarro Gonçalves       " />
 
                 <TextView
                     android:id="@+id/rgm2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="RGM: 35745665" />
             </LinearLayout>
 
@@ -93,27 +85,23 @@
                 android:id="@+id/img3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_weight="1"
                 android:src="@drawable/bemal" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/nome3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Nome:Kaique Maciel Bento de Oliveira             " />
 
                 <TextView
                     android:id="@+id/rgm3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="RGM: 35908793" />
             </LinearLayout>
 
@@ -128,27 +116,23 @@
                 android:id="@+id/img4"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_weight="1"
                 android:src="@drawable/scp_3125" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/nome4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Nome: Matheus Silverio Silva                             " />
 
                 <TextView
                     android:id="@+id/rgm4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="RGM: 35205041" />
             </LinearLayout>
 
@@ -163,27 +147,23 @@
                 android:id="@+id/img5"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_weight="1"
                 android:src="@drawable/drxeno" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/nome5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Nome: Matheus Vecchietti Sassaroli Lima       " />
 
                 <TextView
                     android:id="@+id/rgm5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="RGM: 36062260" />
             </LinearLayout>
 
